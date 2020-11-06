@@ -120,5 +120,4 @@ if 1<=number_case<=100:
             print("Invalid Input! The Input Should Have Value Within A Closed Interval Of 1 To 100")
             break
 else:
-    print("Invalid Input! The Input Should Have Value Within A Closed Interval Of 1 To 100
-")
+    print("Invalid Input! The Input Should Have Value Within A Closed Interval Of 1 To 100")
