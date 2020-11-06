@@ -1,0 +1,29 @@
+number_case = int(input());
+if 1<=number_case<=100:
+    #input
+    lim = 1;
+    while lim <= number_case:
+        input_angkaA = int(input());
+        if 1<=input_angkaA<10000:
+            input_angkaB = int(input());
+            if input_angkaA<=input_angkaB<10000:
+                input_angkaK = int(input());
+                if 1<=input_angkaK<10000:
+                        att = 0;
+                        for i in range(input_angkaA,input_angkaB+1):
+                            if i%input_angkaK==0:
+                                att+=1
+                        print("Case {}: {}".format(lim,att))
+                        lim+=1
+                else:
+                    print("the most recent input must be a value greater than or equal to one and less than 10000")
+                    break
+            else:
+                print("the most recent input must be greater than or equal to the previous input and less than 10000")
+                break
+        else:
+            print("the most recent input must be between 1 and 10000")
+            break
+
+else:
+    print("the input must be a value between 1 and 100")
