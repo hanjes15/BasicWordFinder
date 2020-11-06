@@ -1,0 +1,124 @@
+number_case = int(input())
+
+if 1<=number_case<=100:
+    lim = 1;
+    while lim <= number_case:
+        input_A = int(input());
+        if 1 <= input_A <= 100:
+            input_B = int(input());
+            if 1 <= input_B <= 100:
+                kotak1 = [];
+                ind = 0;
+                while ind < input_A:
+                    input_teks = str(input());
+                    if len(input_teks) == input_B:
+                        kotak1.append(list(input_teks))
+                        ind += 1
+                    else:
+                        print("Invalid Input! The number of characters in the input should be {}".format(input_B))
+                        break
+                if len(kotak1)==input_A:
+                    input_cari = str(input());
+                    teks="";
+                    att=0;
+                    if len(input_cari)>1:
+                        if len(input_cari)<=max(input_A,input_B):
+                            for m in range(0,input_A):
+                                for n in range(0,input_B):
+                                    if kotak1[m][n]==input_cari[0]:
+                                        if (input_B-n)>=len(input_cari):
+                                            #ke kanan
+                                            for o in range(0,len(input_cari)):
+                                                teks+=kotak1[m][n+o]
+                                            if teks==input_cari:
+                                                att+=1
+                                            teks="";
+
+                                        if (input_A-m)>=len(input_cari):
+                                            #ke bawah
+                                            for q in range(0,len(input_cari)):
+                                                teks+=kotak1[m+q][n]
+                                            if teks==input_cari:
+                                                att+=1
+                                            teks="";
+
+                                        if n+1 >= len(input_cari):
+                                            #ke kiri
+                                            for r in range(0,len(input_cari)):
+                                                teks+=kotak1[m][n-r]
+                                            if teks==input_cari:
+                                                att+=1
+                                            teks="";
+
+                                        if m+1 >=len(input_cari):
+                                            #ke atas
+                                            for s in range(0,len(input_cari)):
+                                                teks+=kotak1[m-s][n]
+                                            if teks==input_cari:
+                                                att+=1
+                                            teks="";
+
+                                        if m+1 >= len(input_cari) and n+len(input_cari) <= input_B:
+                                            #ke atas kanan
+                                            for t in range(0,len(input_cari)):
+                                                teks+=kotak1[m-t][n+t]
+                                            if teks==input_cari:
+                                                att+=1
+                                            teks="";
+
+                                        if m+1 >= len(input_cari) and n+1 >= len(input_cari):
+                                            #ke atas kiri
+                                            for u in range(0, len(input_cari)):
+                                                teks += kotak1[m - u][n - u]
+                                            if teks == input_cari:
+                                                att += 1
+                                            teks = "";
+
+                                        if m+len(input_cari) <= input_A and n+len(input_cari)<=input_B:
+                                            #ke bawah kanan
+                                            for v in range(0, len(input_cari)):
+                                                teks += kotak1[m + v][n + v]
+                                            if teks == input_cari:
+                                                att += 1
+                                            teks = "";
+
+                                        if m+len(input_cari) <= input_A and n+1 >= len(input_cari):
+                                            #ke bawah kiri
+                                            for w in range(0, len(input_cari)):
+                                                teks += kotak1[m + w][n - w]
+                                            if teks == input_cari:
+                                                att += 1
+                                            teks="";
+                            print("Case {}: {}".format(lim,att))
+                            lim += 1
+                        else:
+                            print("Case {}: 0".format(lim))
+                            # print("Case {}: Invalid Input! The Number Of Characters Should Be Less Than Or The Same {}".format(lim,max(input_A,input_B)))
+                            lim += 1
+                            # break
+                            continue
+                    elif len(input_cari)==1:
+                        for a in range(0,input_A):
+                            for b in range(0,input_B):
+                                if kotak1[a][b] == input_cari[0]:
+                                    att+=1
+                        print("Case {}: {}".format(lim, att))
+                        lim += 1
+                    else:
+                        print("Invalid Input! You Must Enter The Input You Want To Look For")
+                        lim += 1
+                        continue
+                        # break
+                else:
+                    lim += 1
+                    continue
+                    # break
+            else:
+                print("Invalid Input! The Input Should Have Value Within A Closed Interval Of 1 To 100")
+                break
+        else:
+            print("Invalid Input! The Input Should Have Value Within A Closed Interval Of 1 To 100")
+            break
+else:
+    print("Invalid Input! The Input Should Have Value Within A Closed Interval Of 1 To 100
+")
